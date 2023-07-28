@@ -1,11 +1,21 @@
 package main
 
-import (
-	"fmt"
-)
+import "fmt"
 
 func main() {
-	fmt.Println(isPalindrome(1221))
+	var largestPalindrome int
+
+	// brute force
+	for i := 999; i >= 100; i-- {
+		for j := 999; j >= 100; j-- {
+			if isPalindrome(i*j) && (i*j) > largestPalindrome {
+				fmt.Printf(" %d * %d = %d \n", i, j, i*j)
+				largestPalindrome = i * j
+			}
+		}
+	}
+
+	fmt.Println("Largest palindrome", largestPalindrome)
 }
 
 func isPalindrome(number int) bool {
